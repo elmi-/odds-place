@@ -8,7 +8,7 @@ const getOptions = (key) => {
     params: {
       regions: 'us',
       oddsFormat: 'american',
-      markets: 'h2h,spreads',
+      markets: 'h2h',
       dateFormat: 'iso'
     },
     headers: {
@@ -24,7 +24,7 @@ export const fetchOdds = async (key) => {
     const result = await axios.request(options);
     return {
       success: true,
-      data: result.data.data
+      data: result.data
     }
   } catch (err) {
     return {

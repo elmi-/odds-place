@@ -22,9 +22,18 @@ function App() {
     getOdds();
   }, []);
 
-  console.log("odds:", odds)
+  if(!odds) {
+    return null;
+  }
+
   return (
-    <h1>Hello World</h1>
+    <ul>
+      {
+        odds.data.map((game) => {
+          return <li>{ game.away_team } - { game.home_team }</li>
+        })
+      }
+    </ul>
   );
 }
 
