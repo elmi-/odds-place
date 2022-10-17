@@ -1,4 +1,5 @@
 import axios from "axios";
+const { REACT_APP_LIVE_SPORTS_ODDS_API_KEY, REACT_APP_HOST } = process.env;
 
 const getOptions = (key) => {
   return {
@@ -11,8 +12,8 @@ const getOptions = (key) => {
       dateFormat: 'iso'
     },
     headers: {
-      'X-RapidAPI-Key': 'ef92c2852cmshd4094578df32e44p141dc4jsneb0e9b5eefc9',
-      'X-RapidAPI-Host': 'odds.p.rapidapi.com'
+      'X-RapidAPI-Key': REACT_APP_LIVE_SPORTS_ODDS_API_KEY,
+      'X-RapidAPI-Host': REACT_APP_HOST
     }
   }
 }
@@ -26,6 +27,9 @@ export const fetchOdds = async (key) => {
       data: result.data.data
     }
   } catch (err) {
-    console.log(`Error: ${ err }`);
+    return {
+      error: true,
+      data: err
+    }
   }
 }
